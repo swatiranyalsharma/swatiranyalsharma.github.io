@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swati Ranyal - Resume</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(137deg, #1a1a2e, #16213e);
+        }
+
+        body {
+            background: linear-gradient(137deg, #f5f7fa, #ffffff);
+            min-height: 100vh;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            background: rgba(26, 26, 46, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-left .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left .logo-container img {
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .header-left .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-left .email-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .header-left .email-container:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+
+        .header-left .email-container p {
+            color: #00ffff;
+            font-size: 0.9em;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-right a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            width: 100px;
+            text-align: center;
+            font-size: 1em;
+            flex: 1;
+        }
+
+        .header-right a:hover {
+            color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .header-right a.active {
+            color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .main-content {
+            padding-top: 100px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            background: linear-gradient(45deg, #00ffff, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .experience-section, .education-section {
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+        }
+
+        .experience-item h3 {
+            color: #00ffff;
+            margin-bottom: 10px;
+        }
+
+        .experience-item p {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .experience-item .date {
+            color: #00ffff;
+            font-size: 0.9em;
+        }
+
+        .experience-item .description {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .job {
+            position: relative;
+            padding-left: 35px;
+            border-left: 3px solid #007bff;
+            margin-bottom: 50px;
+        }
+
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-title {
+            font-size: 1.8em;
+            color: #00ffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .job-title::before {
+            content: '💼';
+            font-size: 1.2em;
+        }
+
+        .company-info {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .company-info::before {
+            content: '🏢';
+        }
+
+        .achievements {
+            list-style-type: none;
+            margin-top: 25px;
+        }
+
+        .achievements li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+
+        .achievements li::before {
+            content: '✓';
+            color: #00ffff;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .education-item {
+            margin-bottom: 40px;
+            padding-left: 35px;
+            border-left: 3px solid #007bff;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-item h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .education-item h3::before {
+            content: '🎓';
+        }
+
+        .education-details {
+            color: #ffffff;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .education-details::before {
+            content: '📚';
+        }
+
+        .certifications {
+            margin-top: 40px;
+        }
+
+        .certifications ul {
+            list-style-type: none;
+        }
+
+        .certifications li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.8;
+            color: #ffffff;
+            font-size: 1.1em;
+        }
+
+        .certifications li::before {
+            content: '⭐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            color: #00ffff;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 0;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .header-left .email-container {
+                display: none;
+            }
+
+            .header-right {
+                gap: 10px;
+            }
+
+            .header-right a {
+                padding: 6px 15px;
+                font-size: 0.9em;
+            }
+
+            .main-content {
+                padding-top: 80px;
+            }
+
+            .section-title {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+            .experience-section,
+            .education-section {
+                padding: 30px 20px;
+                margin-bottom: 30px;
+            }
+
+            .job-title,
+            .education-item h3 {
+                font-size: 1.4em;
+            }
+
+            .job,
+            .education-item {
+                padding-left: 25px;
+            }
+
+            .achievements li,
+            .certifications li {
+                font-size: 1em;
+                padding-left: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <div class="logo-container">
+                    <img src="images/download.jpeg" alt="Logo">
+                </div>
+                <div class="email-container">
+                    <img src="images/chat.png" style="height: 20px;">
+                    <p>sranyal41@gmail.com</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="./index.html">Home</a>
+                <a href="./techStack.html">Tech Stack</a>
+                <a href="./experience.html" class="active">Resume</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="experience-section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="job">
+                <h3 class="job-title">Software Development Engineer II</h3>
+                <p class="company-info">SaaS Labs Pvt Ltd | July 2021 - Present</p>
+                <ul class="achievements">
+                    <li>Optimized backend processes, reducing server response time by 40%, increasing user satisfaction by 25%</li>
+                    <li>Integrated CRMs like HubSpot, Freshdesk, and ChurnZero</li>
+                    <li>Refactored legacy codebases, achieving a 30% reduction in system downtime</li>
+                    <li>Developed Developer API v2 with advanced monitoring dashboards</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3 class="job-title">PHP Developer Intern</h3>
+                <p class="company-info">ToXSL Technologies Pvt Ltd | Jan 2021 - Jun 2021</p>
+                <ul class="achievements">
+                    <li>Developed and maintained backend APIs, enhancing system performance and scalability</li>
+                    <li>Created user-friendly UI components and implemented new features like search filters</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="education-section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <h3>B.Tech in Computer Science</h3>
+                <p class="education-details">Rayat Bahra University | August 2017 - July 2021 | CGPA: 9.13</p>
+            </div>
+
+            <div class="education-item">
+                <h3>Class XII</h3>
+                <p class="education-details">Kendriya Vidyalaya | May 2017 | Percentage: 74.20%</p>
+            </div>
+        </section>
+
+        <section class="education-section">
+            <h2 class="section-title">Certifications and Achievements</h2>
+            <div class="certifications">
+                <ul>
+                    <li>The NestJS Bootcamp - Complete Developer Guide (Udemy)</li>
+                    <li>Secured 1st position in Hackathon organized by CGC Chandigarh (2018)</li>
+                    <li>Reduced backend API response time by 30%</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#00ffff"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5
+                },
+                size: {
+                    value: 3
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00ffff",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2
+                }
+            }
+        });
+    </script>
+</body>
+</html> 
