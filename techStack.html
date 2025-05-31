@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swati Ranyal - Tech Stack</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(137deg, #1a1a2e, #16213e);
+        }
+
+        body {
+            background: linear-gradient(137deg, #f5f7fa, #ffffff);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            background: rgba(26, 26, 46, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+            background: rgba(26, 26, 46, 0.98);
+            box-shadow: 0 2px 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-left .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left .logo-container img {
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .header-left .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-left .email-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .header-left .email-container:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+
+        .header-left .email-container p {
+            color: #00ffff;
+            font-size: 0.9em;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-right a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            padding: 8px 5px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            width: 100px;
+            text-align: center;
+            font-size: 1em;
+            flex: 1;
+            border: 1px solid transparent;
+        }
+
+        .header-right a:hover {
+            color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+
+        .header-right a.active {
+            color: #00ffff;
+            background: rgba(0, 255, 255, 0.15);
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .header-right a.active:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 0;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .header-left .email-container {
+                display: none;
+            }
+
+            .header-right {
+                gap: 10px;
+            }
+
+            .header-right a {
+                padding: 6px 15px;
+                font-size: 0.9em;
+            }
+        }
+
+        .skills-section {
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 100px auto 30px;
+            max-width: 1400px;
+            opacity: 1;
+            transform: none;
+        }
+
+        .skills-section h2 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+            background: linear-gradient(45deg, #00ffff, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .skill-category {
+            min-width: 280px;
+            width: calc(25% - 30px);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.2);
+        }
+
+        .skill-category h3 {
+            color: #00ffff;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-category h3 i {
+            font-size: 1.3em;
+            background: rgba(0, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .skill-item h4 {
+            color: #00ffff;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item p {
+            color: #ffffff;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .skill-level {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-level::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #00ffff, #00bcd4);
+            border-radius: 3px;
+            transform: scaleX(1);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover .skill-level::after {
+            transform: scaleX(0.95);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #00ffff, #00bcd4);
+            color: #1a1a2e;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .skill-item {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .skill-item:nth-child(1) { animation-delay: 0.1s; }
+        .skill-item:nth-child(2) { animation-delay: 0.2s; }
+        .skill-item:nth-child(3) { animation-delay: 0.3s; }
+        .skill-item:nth-child(4) { animation-delay: 0.4s; }
+        .skill-item:nth-child(5) { animation-delay: 0.5s; }
+        .skill-item:nth-child(6) { animation-delay: 0.6s; }
+
+        @media (max-width: 1200px) {
+            .skill-category {
+                width: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skill-category {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            background: linear-gradient(45deg, #00ffff, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tech-stack-section {
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .tech-category {
+            margin-bottom: 40px;
+        }
+
+        .tech-category h3 {
+            color: #00ffff;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+        }
+
+        .tech-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .tech-item h4 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .tech-item p {
+            color: #ffffff;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <div class="logo-container">
+                    <img src="images/download.jpeg" alt="Logo">
+                </div>
+                <div class="email-container">
+                    <img src="images/chat.png" style="height: 20px;">
+                    <p>sranyal41@gmail.com</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="./index.html">Home</a>
+                <a href="./techStack.html" class="active">Tech Stack</a>
+                <a href="./experience.html">Resume</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="skills-section">
+            <h2>Technical Skills</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Data Structures & Algorithms</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <h4>Data Structures</h4>
+                            <p>Arrays, Linked Lists, Stacks, Queues, Trees, Graphs, Hash Tables</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Algorithms</h4>
+                            <p>Sorting, Searching, Dynamic Programming, Greedy Algorithms</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Problem Solving</h4>
+                            <p>Time & Space Complexity Analysis, Algorithm Optimization</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Competitive Programming</h4>
+                            <p>Codeforces, LeetCode, HackerRank</p>
+                            <div class="skill-level"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <h4>Node.js</h4>
+                            <p>Server-side JavaScript runtime</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>NestJS</h4>
+                            <p>Progressive Node.js framework</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>TypeScript</h4>
+                            <p>Typed JavaScript programming</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>PHP</h4>
+                            <p>Server-side scripting language</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Yii2</h4>
+                            <p>PHP framework for web applications</p>
+                            <div class="skill-level"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> DevOps & Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <h4>Git</h4>
+                            <p>Version control system</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Docker</h4>
+                            <p>Containerization</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Jira</h4>
+                            <p>Project management tool</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Postman</h4>
+                            <p>API development and testing</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Swagger</h4>
+                            <p>API documentation</p>
+                            <div class="skill-level"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Frontend</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <h4>HTML</h4>
+                            <p>Semantic markup and modern HTML5 features</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>CSS</h4>
+                            <p>Responsive design and modern CSS3 features</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>JavaScript</h4>
+                            <p>ES5/6, Modern JavaScript features</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>jQuery</h4>
+                            <p>DOM manipulation and AJAX</p>
+                            <div class="skill-level"></div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Bootstrap</h4>
+                            <p>Responsive framework and components</p>
+                            <div class="skill-level"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#00ffff"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5
+                },
+                size: {
+                    value: 3
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00ffff",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2
+                }
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to top functionality
+        const scrollTop = document.querySelector('.scroll-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        scrollTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate skill items on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html> 
